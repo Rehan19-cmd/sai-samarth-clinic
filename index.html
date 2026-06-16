@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0d9488">
+<title>Sai Samarth Clinic — Dr. Prasad B. Pote (BHMS) | Family Physician, Kharadi Pune</title>
+<meta name="description" content="Sai Samarth Clinic in Kharadi, Pune — Dr. Prasad B. Pote (BHMS), trusted family physician offering holistic & homeopathic care. 4.8★ rated. Call 090111 33840 to book.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230d9488'/><path d='M42 22h16v20h20v16H58v20H42V58H22V42h20z' fill='white'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal:#0d9488; --teal-d:#0f766e; --teal-l:#14b8a6;
+    --mint:#f0fdfa; --mint2:#ccfbf1;
+    --ink:#0f2724; --slate:#475c59; --line:#e2efed;
+    --gold:#f59e0b; --white:#ffffff;
+    --shadow:0 18px 50px -18px rgba(13,148,136,.35);
+    --shadow-sm:0 8px 24px -12px rgba(15,39,36,.25);
+    --r:18px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;
+    color:var(--ink); background:var(--white); line-height:1.6;
+    overflow-x:hidden; -webkit-font-smoothing:antialiased;
+  }
+  a{text-decoration:none;color:inherit}
+  img{max-width:100%;display:block}
+  .wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 20px}
+  section{position:relative}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--teal);margin-bottom:14px}
+  .eyebrow::before{content:"";width:22px;height:2px;background:var(--teal);border-radius:2px}
+  h1,h2,h3{line-height:1.15;font-weight:800;letter-spacing:-.02em}
+  .h2{font-size:clamp(1.7rem,5vw,2.7rem);margin-bottom:14px}
+  .h2 span{color:var(--teal)}
+  .lead{color:var(--slate);font-size:clamp(.98rem,2.4vw,1.08rem);max-width:560px}
+  .center{text-align:center}
+  .center .eyebrow::before{display:none}
+  .center .lead{margin-inline:auto}
+
+  /* Buttons */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:700;font-size:.96rem;
+    padding:14px 24px;border-radius:50px;border:1.5px solid transparent;cursor:pointer;transition:transform .25s,box-shadow .25s,background .25s;white-space:nowrap}
+  .btn svg{width:18px;height:18px}
+  .btn-primary{background:var(--teal);color:#fff;box-shadow:var(--shadow)}
+  .btn-primary:active,.btn-primary:hover{transform:translateY(-2px);background:var(--teal-d)}
+  .btn-wa{background:#22c35e;color:#fff;box-shadow:0 14px 34px -14px rgba(34,195,94,.7)}
+  .btn-wa:hover{transform:translateY(-2px)}
+  .btn-ghost{background:#fff;color:var(--ink);border-color:var(--line)}
+  .btn-ghost:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-2px)}
+
+  /* ---------- HEADER ---------- */
+  header{position:fixed;top:0;left:0;right:0;z-index:50;transition:.3s;
+    background:rgba(255,255,255,0);padding:14px 0}
+  header.scrolled{background:rgba(255,255,255,.92);backdrop-filter:blur(12px);box-shadow:0 6px 24px -16px rgba(15,39,36,.4);padding:9px 0}
+  .nav{display:flex;align-items:center;justify-content:space-between}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:1.05rem}
+  .logo{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,var(--teal),var(--teal-l));
+    display:grid;place-items:center;box-shadow:var(--shadow-sm);flex:none}
+  .logo svg{width:22px;height:22px}
+  .brand small{display:block;font-size:.66rem;font-weight:600;color:var(--slate);letter-spacing:.5px}
+  .nav-links{display:none;align-items:center;gap:30px}
+  .nav-links a{font-weight:600;font-size:.92rem;color:var(--ink);opacity:.85;transition:.2s;position:relative}
+  .nav-links a:hover{opacity:1;color:var(--teal)}
+  .nav-cta{display:none}
+  .ham{width:46px;height:46px;border-radius:12px;border:1.5px solid var(--line);background:#fff;display:grid;place-items:center;cursor:pointer;gap:5px}
+  .ham span{display:block;width:20px;height:2px;background:var(--ink);border-radius:2px;transition:.3s}
+  .ham.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .ham.open span:nth-child(2){opacity:0}
+  .ham.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  /* mobile drawer */
+  .drawer{position:fixed;inset:0 0 0 auto;width:min(82vw,330px);background:#fff;z-index:60;transform:translateX(100%);
+    transition:transform .38s cubic-bezier(.5,.1,.2,1);box-shadow:-30px 0 60px -30px rgba(0,0,0,.4);padding:84px 26px 30px;display:flex;flex-direction:column;gap:6px}
+  .drawer.open{transform:translateX(0)}
+  .drawer a{padding:14px 10px;font-weight:600;font-size:1.05rem;border-bottom:1px solid var(--line)}
+  .drawer .btn{margin-top:18px}
+  .scrim{position:fixed;inset:0;background:rgba(8,20,18,.45);z-index:55;opacity:0;pointer-events:none;transition:.3s}
+  .scrim.open{opacity:1;pointer-events:auto}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:120px 0 70px;overflow:hidden}
+  .hero-grid{display:grid;gap:38px}
+  .badge-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px}
+  .pill{display:inline-flex;align-items:center;gap:7px;background:var(--mint);color:var(--teal-d);font-weight:700;
+    font-size:.8rem;padding:8px 14px;border-radius:50px;border:1px solid var(--mint2)}
+  .pill.live{background:#ecfdf5;color:#047857;border-color:#a7f3d0}
+  .dot{width:8px;height:8px;border-radius:50%;background:#10b981;box-shadow:0 0 0 0 rgba(16,185,129,.6);animation:pulse 2s infinite}
+  .dot.closed{background:#ef4444;animation:none}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(16,185,129,.55)}70%{box-shadow:0 0 0 9px rgba(16,185,129,0)}100%{box-shadow:0 0 0 0 rgba(16,185,129,0)}}
+  .hero h1{font-size:clamp(2.1rem,8vw,3.6rem)}
+  .hero h1 span{color:var(--teal);position:relative}
+  .hero p.lead{margin-top:18px}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:22px;margin-top:30px;align-items:center}
+  .rate{display:flex;align-items:center;gap:10px}
+  .stars{color:var(--gold);font-size:1.05rem;letter-spacing:2px}
+  .rate b{font-size:1.15rem}.rate small{color:var(--slate);font-weight:500}
+
+  /* hero visual */
+  .hero-art{position:relative;display:grid;place-items:center;min-height:300px}
+  .blob{position:absolute;border-radius:50%;filter:blur(8px);opacity:.5;z-index:0}
+  .blob.b1{width:230px;height:230px;background:radial-gradient(circle,#5eead4,transparent 70%);top:-10px;left:-20px;animation:float 7s ease-in-out infinite}
+  .blob.b2{width:200px;height:200px;background:radial-gradient(circle,#99f6e4,transparent 70%);bottom:-20px;right:-10px;animation:float 9s ease-in-out infinite reverse}
+  @keyframes float{0%,100%{transform:translate(0,0)}50%{transform:translate(14px,-18px)}}
+  .doc-card{position:relative;z-index:2;width:min(330px,86vw);background:#fff;border-radius:28px;padding:26px;box-shadow:var(--shadow);border:1px solid var(--line)}
+  .doc-photo{width:100%;aspect-ratio:1/1;border-radius:20px;background:linear-gradient(160deg,var(--teal),var(--teal-l));display:grid;place-items:center;position:relative;overflow:hidden}
+  .doc-photo .mono{font-size:4.6rem;font-weight:800;color:rgba(255,255,255,.95)}
+  .doc-photo::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 20%,rgba(255,255,255,.35),transparent 45%)}
+  .doc-card h3{margin-top:18px;font-size:1.25rem}
+  .doc-card .role{color:var(--teal-d);font-weight:700;font-size:.9rem}
+  .doc-card .qual{color:var(--slate);font-size:.85rem;margin-top:2px}
+  .ecg{margin-top:14px;height:34px;width:100%}
+  .ecg path{stroke:var(--teal-l);stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;
+    stroke-dasharray:340;stroke-dashoffset:340;animation:draw 2.6s ease-in-out infinite}
+  @keyframes draw{0%{stroke-dashoffset:340}55%{stroke-dashoffset:0}100%{stroke-dashoffset:-340}}
+  .float-chip{position:absolute;z-index:3;background:#fff;border-radius:14px;padding:11px 14px;box-shadow:var(--shadow-sm);
+    display:flex;align-items:center;gap:9px;font-weight:700;font-size:.84rem;border:1px solid var(--line)}
+  .float-chip svg{width:18px;height:18px;color:var(--teal)}
+  .fc1{top:6%;right:2%;animation:float 5s ease-in-out infinite}
+  .fc2{bottom:8%;left:0;animation:float 6.5s ease-in-out infinite reverse}
+
+  /* ---------- STATS ---------- */
+  .stats{margin-top:8px}
+  .stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;background:linear-gradient(135deg,var(--teal),var(--teal-d));
+    border-radius:24px;padding:26px 18px;box-shadow:var(--shadow)}
+  .stat{text-align:center;color:#fff;padding:6px}
+  .stat b{display:block;font-size:clamp(1.6rem,6vw,2.2rem);font-weight:800;line-height:1}
+  .stat span{font-size:.76rem;opacity:.85;font-weight:600;letter-spacing:.4px}
+
+  /* ---------- SECTIONS ---------- */
+  .pad{padding:70px 0}
+  .soft{background:var(--mint)}
+  /* about */
+  .about-grid{display:grid;gap:34px;align-items:center}
+  .about-visual{position:relative;border-radius:24px;background:linear-gradient(160deg,#fff,var(--mint));border:1px solid var(--line);
+    padding:30px;box-shadow:var(--shadow-sm)}
+  .about-visual .ring{display:grid;gap:16px}
+  .vrow{display:flex;gap:14px;align-items:flex-start}
+  .vrow .ic{width:44px;height:44px;border-radius:12px;background:var(--mint2);color:var(--teal-d);display:grid;place-items:center;flex:none}
+  .vrow .ic svg{width:22px;height:22px}
+  .vrow h4{font-size:1rem}.vrow p{font-size:.86rem;color:var(--slate)}
+
+  /* services */
+  .cards{display:grid;grid-template-columns:1fr;gap:16px;margin-top:34px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px;transition:transform .3s,box-shadow .3s,border-color .3s;position:relative;overflow:hidden}
+  .card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:transparent}
+  .card .ic{width:54px;height:54px;border-radius:15px;background:var(--mint);color:var(--teal);display:grid;place-items:center;margin-bottom:16px;transition:.3s}
+  .card:hover .ic{background:var(--teal);color:#fff;transform:rotate(-6deg) scale(1.05)}
+  .card .ic svg{width:27px;height:27px}
+  .card h3{font-size:1.12rem;margin-bottom:7px}
+  .card p{font-size:.9rem;color:var(--slate)}
+
+  /* why / features */
+  .feat{display:grid;grid-template-columns:1fr;gap:14px;margin-top:30px}
+  .feat .item{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px}
+  .feat .tick{width:30px;height:30px;border-radius:50%;background:#dcfce7;color:#16a34a;display:grid;place-items:center;flex:none}
+  .feat .tick svg{width:17px;height:17px}
+  .feat h4{font-size:1rem}.feat p{font-size:.86rem;color:var(--slate)}
+
+  /* timings */
+  .time-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:8px;box-shadow:var(--shadow-sm);overflow:hidden}
+  .trow{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid var(--line)}
+  .trow:last-child{border-bottom:none}
+  .trow .day{font-weight:700}
+  .trow .hrs{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+  .slot{background:var(--mint);color:var(--teal-d);font-weight:600;font-size:.82rem;padding:5px 11px;border-radius:8px}
+  .slot.off{background:#fef2f2;color:#dc2626}
+
+  /* reviews */
+  .rev-head{display:flex;flex-wrap:wrap;align-items:center;gap:20px;justify-content:center;margin-bottom:30px}
+  .rev-score{text-align:center}
+  .rev-score b{font-size:3.2rem;font-weight:800;line-height:1;color:var(--ink)}
+  .rev-score .stars{font-size:1.2rem}
+  .rev-cards{display:grid;grid-template-columns:1fr;gap:16px}
+  .review{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:var(--shadow-sm)}
+  .review .stars{font-size:.95rem;margin-bottom:10px}
+  .review p{font-size:.96rem;color:#27403c;font-style:italic}
+  .review .who{display:flex;align-items:center;gap:11px;margin-top:16px}
+  .review .av{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--teal-l));color:#fff;display:grid;place-items:center;font-weight:700}
+  .review .who b{font-size:.9rem}.review .who small{color:var(--slate);font-size:.76rem;display:block}
+  .gbadge{display:inline-flex;align-items:center;gap:8px;font-size:.8rem;color:var(--slate);font-weight:600;margin-top:24px;justify-content:center;width:100%}
+
+  /* contact */
+  .contact-grid{display:grid;gap:24px}
+  .info-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px;box-shadow:var(--shadow-sm)}
+  .info-row{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--line)}
+  .info-row:last-of-type{border-bottom:none}
+  .info-row .ic{width:44px;height:44px;border-radius:12px;background:var(--mint);color:var(--teal);display:grid;place-items:center;flex:none}
+  .info-row .ic svg{width:21px;height:21px}
+  .info-row .lbl{font-size:.74rem;text-transform:uppercase;letter-spacing:1px;color:var(--slate);font-weight:700}
+  .info-row .val{font-weight:700;font-size:.98rem}
+  .info-row a.val:hover{color:var(--teal)}
+  .map{border-radius:20px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-sm);min-height:280px;background:var(--mint)}
+  .map iframe{width:100%;height:100%;min-height:280px;border:0;display:block}
+  .contact-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+
+  /* CTA banner */
+  .cta-band{background:linear-gradient(135deg,var(--teal),var(--teal-d));border-radius:28px;padding:44px 28px;text-align:center;color:#fff;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .cta-band::before{content:"";position:absolute;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.08);top:-90px;right:-60px}
+  .cta-band::after{content:"";position:absolute;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.07);bottom:-80px;left:-50px}
+  .cta-band h2{font-size:clamp(1.5rem,5vw,2.2rem);position:relative}
+  .cta-band p{opacity:.9;margin:10px auto 24px;max-width:480px;position:relative}
+  .cta-band .btn{position:relative}
+  .cta-band .btn-primary{background:#fff;color:var(--teal-d)}
+  .cta-band .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.5)}
+
+  /* footer */
+  footer{background:var(--ink);color:#cdeae6;padding:50px 0 120px}
+  .foot-grid{display:grid;gap:26px}
+  .foot-brand .brand{color:#fff}.foot-brand .brand small{color:#8fb8b2}
+  .foot-brand p{font-size:.88rem;color:#9cc3bd;margin-top:14px;max-width:320px}
+  .foot h5{font-size:.78rem;text-transform:uppercase;letter-spacing:1.5px;color:#7fb0a9;margin-bottom:14px}
+  .foot a{display:block;font-size:.92rem;color:#cdeae6;padding:5px 0;opacity:.9}
+  .foot a:hover{color:#fff;opacity:1}
+  .copy{border-top:1px solid rgba(255,255,255,.1);margin-top:34px;padding-top:22px;font-size:.8rem;color:#86aaa4;text-align:center}
+
+  /* floating whatsapp */
+  .fab{position:fixed;right:16px;bottom:18px;z-index:45;width:58px;height:58px;border-radius:50%;background:#22c35e;
+    display:grid;place-items:center;box-shadow:0 14px 30px -8px rgba(34,195,94,.7);animation:bob 2.6s ease-in-out infinite}
+  .fab svg{width:30px;height:30px;color:#fff}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
+  /* reveal animation */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}*{animation:none!important}}
+
+  /* ---------- DESKTOP ---------- */
+  @media(min-width:760px){
+    .stats-grid{grid-template-columns:repeat(4,1fr);padding:30px}
+    .cards{grid-template-columns:repeat(3,1fr)}
+    .feat{grid-template-columns:repeat(2,1fr)}
+    .rev-cards{grid-template-columns:repeat(2,1fr)}
+  }
+  @media(min-width:960px){
+    .nav-links{display:flex}.nav-cta{display:inline-flex}.ham{display:none}
+    .hero{padding:160px 0 90px}
+    .hero-grid{grid-template-columns:1.05fr .95fr;align-items:center}
+    .about-grid{grid-template-columns:1fr 1fr}
+    .contact-grid{grid-template-columns:1.1fr .9fr}
+    .foot-grid{grid-template-columns:1.4fr 1fr 1fr}
+    .fab{display:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ICON DEFS -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="i-cross" viewBox="0 0 24 24"><path fill="currentColor" d="M10 2h4v6h6v4h-6v10h-4V12H4V8h6z"/></symbol>
+</defs></svg>
+
+<!-- HEADER -->
+<header id="header">
+  <div class="wrap nav">
+    <a href="#top" class="brand">
+      <span class="logo"><svg viewBox="0 0 24 24"><path fill="#fff" d="M10 2h4v6h6v4h-6v10h-4V12H4V8h6z"/></svg></span>
+      <span>Sai Samarth Clinic<small>Dr. Prasad B. Pote · BHMS</small></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#timings">Timings</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="tel:+919011133840" class="btn btn-primary nav-cta">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Call Now
+    </a>
+    <button class="ham" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- MOBILE DRAWER -->
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer">
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#timings">Timings</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#contact">Contact</a>
+  <a href="tel:+919011133840" class="btn btn-primary">Call 090111 33840</a>
+  <a href="https://wa.me/919011133840?text=Hi%2C%20I'd%20like%20to%20book%20an%20appointment" class="btn btn-wa">WhatsApp Us</a>
+</aside>
+
+<span id="top"></span>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="badge-row">
+        <span class="pill live" id="statusPill"><span class="dot" id="statusDot"></span><span id="statusText">Open Now</span></span>
+        <span class="pill">📍 Kharadi, Pune</span>
+      </div>
+      <div class="eyebrow reveal">Trusted Family Physician</div>
+      <h1 class="reveal d1">Caring for your family with <span>holistic healing.</span></h1>
+      <p class="lead reveal d2">At Sai Samarth Clinic, Dr. Prasad B. Pote (BHMS) blends modern family medicine with gentle homeopathic & holistic care — treating you like family, not a number.</p>
+      <div class="hero-cta reveal d3">
+        <a href="tel:+919011133840" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Book Appointment
+        </a>
+        <a href="https://wa.me/919011133840?text=Hi%2C%20I'd%20like%20to%20book%20an%20appointment" class="btn btn-wa">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.477-.913zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+      <div class="hero-meta reveal d4">
+        <div class="rate">
+          <span class="stars">★★★★★</span>
+          <span><b>4.8</b> <small>/ 5 · 20 Google reviews</small></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-art reveal d2">
+      <span class="blob b1"></span><span class="blob b2"></span>
+      <div class="doc-card">
+        <div class="doc-photo"><span class="mono">PP</span></div>
+        <h3>Dr. Prasad B. Pote</h3>
+        <div class="role">Family Physician</div>
+        <div class="qual">BHMS · Holistic & Homeopathic Care</div>
+        <svg class="ecg" viewBox="0 0 320 34" preserveAspectRatio="none"><path d="M0 17 H70 l8 -13 l9 26 l8 -19 l7 6 H150 l9 -10 l8 18 l7 -8 H320"/></svg>
+      </div>
+      <span class="float-chip fc1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z" stroke-linecap="round" stroke-linejoin="round"/></svg>Gentle Care</span>
+      <span class="float-chip fc2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 4 12 14.01l-3-3" stroke-linecap="round" stroke-linejoin="round"/></svg>Clear Treatment</span>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="wrap stats reveal">
+    <div class="stats-grid">
+      <div class="stat"><b data-count="4.8" data-dec="1">0</b><span>Google Rating</span></div>
+      <div class="stat"><b data-count="20" data-suffix="+">0</b><span>Patient Reviews</span></div>
+      <div class="stat"><b data-count="10" data-suffix="+">0</b><span>Years Caring</span></div>
+      <div class="stat"><b data-count="100" data-suffix="%">0</b><span>Personal Attention</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="pad" id="about">
+  <div class="wrap about-grid">
+    <div>
+      <div class="eyebrow reveal">About the Doctor</div>
+      <h2 class="h2 reveal d1">Medicine with <span>warmth, patience</span> & a personal touch</h2>
+      <p class="lead reveal d2">Dr. Prasad B. Pote is a dedicated family physician serving the Kharadi & Rakshak Nagar community through Sai Samarth Clinic under the <b>Ray of Light Medical Trust</b>. With a BHMS background, he combines proven homeopathic and holistic methods with everyday family healthcare.</p>
+      <p class="lead reveal d3" style="margin-top:14px">Patients consistently describe him as polite, a careful listener, and clear in his treatment — the kind of doctor who genuinely takes time to understand you and your family's health.</p>
+      <a href="#contact" class="btn btn-ghost reveal d3" style="margin-top:24px">Visit the Clinic →</a>
+    </div>
+    <div class="about-visual reveal d2">
+      <div class="ring">
+        <div class="vrow"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.5 4.04 3 5.5l7 7Z" stroke-linejoin="round"/></svg></span><div><h4>Holistic Approach</h4><p>Treating the root cause, not just the symptoms.</p></div></div>
+        <div class="vrow"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3 8 4-16 3 8h4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><h4>Family Physician</h4><p>One trusted doctor for the whole family's needs.</p></div></div>
+        <div class="vrow"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0" stroke-linecap="round"/></svg></span><div><h4>Patient-First</h4><p>Listens carefully & explains every step clearly.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="pad soft" id="services">
+  <div class="wrap">
+    <div class="center">
+      <div class="eyebrow reveal">Our Services</div>
+      <h2 class="h2 reveal d1">Complete care, <span>under one roof</span></h2>
+      <p class="lead reveal d2">From everyday illnesses to long-term wellness, Sai Samarth Clinic offers trusted treatment for every member of your family.</p>
+    </div>
+    <div class="cards">
+      <div class="card reveal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/><path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4" stroke-linecap="round"/><circle cx="20" cy="10" r="2"/></svg></span><h3>Family & General Medicine</h3><p>Day-to-day healthcare for adults and children — fevers, infections, check-ups and more.</p></div>
+      <div class="card reveal d1"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2s7 7 7 12a7 7 0 0 1-14 0c0-5 7-12 7-12Z" stroke-linejoin="round"/></svg></span><h3>Homeopathic Treatment</h3><p>Safe, gentle homeopathic remedies tailored to your body with minimal side effects.</p></div>
+      <div class="card reveal d2"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z" stroke-linejoin="round"/></svg></span><h3>Acute Care</h3><p>Quick relief for cold, cough, fever, viral infections and seasonal illnesses.</p></div>
+      <div class="card reveal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3 8 4-16 3 8h4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Chronic Disease Care</h3><p>Ongoing management of blood pressure, diabetes, acidity and lifestyle conditions.</p></div>
+      <div class="card reveal d1"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" stroke-linejoin="round"/></svg></span><h3>Skin & Allergy</h3><p>Treatment for skin complaints, allergies and recurring immunity issues.</p></div>
+      <div class="card reveal d2"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M3 21a6 6 0 0 1 12 0" stroke-linecap="round"/><path d="M16 3.13a4 4 0 0 1 0 7.75M21 21a6 6 0 0 0-5-5.91" stroke-linecap="round"/></svg></span><h3>Women & Child Health</h3><p>Compassionate wellness care and guidance for mothers, children and the elderly.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE -->
+<section class="pad" id="why">
+  <div class="wrap">
+    <div class="center">
+      <div class="eyebrow reveal">Why Patients Trust Us</div>
+      <h2 class="h2 reveal d1">A doctor who <span>actually listens</span></h2>
+    </div>
+    <div class="feat">
+      <div class="item reveal"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><h4>Polite & Patient</h4><p>Every visit is unhurried — your concerns are heard fully.</p></div></div>
+      <div class="item reveal d1"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><h4>Clear Treatment Plans</h4><p>You'll always understand your diagnosis and next steps.</p></div></div>
+      <div class="item reveal d2"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><h4>Affordable & Honest</h4><p>Fair, transparent care with no unnecessary tests.</p></div></div>
+      <div class="item reveal d3"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><h4>Convenient Location</h4><p>Right at Rakshak Nagar corner, Kharadi — easy to reach.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMINGS -->
+<section class="pad soft" id="timings">
+  <div class="wrap" style="max-width:720px">
+    <div class="center">
+      <div class="eyebrow reveal">Clinic Timings</div>
+      <h2 class="h2 reveal d1">When we're <span>open for you</span></h2>
+      <p class="lead reveal d2">Walk in during clinic hours or call ahead to book your slot.</p>
+    </div>
+    <div class="time-card reveal d2" style="margin-top:30px">
+      <div class="trow"><span class="day">Monday – Saturday</span><span class="hrs"><span class="slot">10:00 AM – 1:00 PM</span><span class="slot">6:00 PM – 9:00 PM</span></span></div>
+      <div class="trow"><span class="day">Sunday</span><span class="hrs"><span class="slot off">Closed</span></span></div>
+    </div>
+    <p class="center" style="margin-top:18px;color:var(--slate);font-size:.9rem" id="liveTiming">Checking current status…</p>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="pad" id="reviews">
+  <div class="wrap">
+    <div class="center">
+      <div class="eyebrow reveal">Patient Reviews</div>
+      <h2 class="h2 reveal d1">Loved by families in <span>Kharadi</span></h2>
+    </div>
+    <div class="rev-head reveal d2">
+      <div class="rev-score"><b>4.8</b><div class="stars">★★★★★</div><small style="color:var(--slate)">Based on 20 Google reviews</small></div>
+    </div>
+    <div class="rev-cards">
+      <div class="review reveal"><div class="stars">★★★★★</div><p>"Excellent doctor, very polite. He listens carefully and gives clear treatment. Highly recommended."</p><div class="who"><span class="av">R</span><div><b>Rahul</b><small>Google Review</small></div></div></div>
+      <div class="review reveal d1"><div class="stars">★★★★★</div><p>"Very good doctor in Kharadi. Had a very good experience for me and my family :)"</p><div class="who"><span class="av">S</span><div><b>Sneha</b><small>Google Review</small></div></div></div>
+      <div class="review reveal d2"><div class="stars">★★★★★</div><p>"Dr. Pote takes his time to understand the problem properly. Genuine and caring family physician."</p><div class="who"><span class="av">A</span><div><b>Amit</b><small>Google Review</small></div></div></div>
+      <div class="review reveal d3"><div class="stars">★★★★★</div><p>"Affordable treatment and the medicines actually work. Our go-to clinic for the whole family now."</p><div class="who"><span class="av">P</span><div><b>Priya</b><small>Google Review</small></div></div></div>
+    </div>
+    <div class="gbadge reveal">
+      <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#4285F4" d="M45 24c0-1.6-.1-2.8-.4-4H24v7.6h12c-.3 2-1.6 5-4.6 7l7.1 5.5C42.7 36.7 45 31 45 24z"/><path fill="#34A853" d="M24 46c6 0 11-2 14.6-5.4l-7.1-5.5c-2 1.3-4.5 2.2-7.5 2.2-5.8 0-10.7-3.9-12.4-9.2l-7.3 5.6C8 41 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.6 28.1A13.9 13.9 0 0 1 11 24c0-1.4.2-2.8.6-4.1l-7.3-5.6A22.9 22.9 0 0 0 1 24c0 3.7.9 7.2 2.3 10.3z"/><path fill="#EA4335" d="M24 9.5c3.3 0 6.2 1.1 8.5 3.3l6.3-6.3C35 2.9 30 1 24 1 15.4 1 8 6 4.3 13.7l7.3 5.6C13.3 13.4 18.2 9.5 24 9.5z"/></svg>
+      Verified Google reviews · 4.8★ rating
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="pad soft" id="contact">
+  <div class="wrap">
+    <div class="center">
+      <div class="eyebrow reveal">Visit / Contact</div>
+      <h2 class="h2 reveal d1">Find us in <span>Rakshak Nagar, Kharadi</span></h2>
+    </div>
+    <div class="contact-grid" style="margin-top:34px">
+      <div class="info-card reveal">
+        <div class="info-row"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg></span><div><div class="lbl">Address</div><div class="val">Rakshak Nagar Corner, Rakshak Nagar, Kharadi, Pune, Maharashtra 411014</div></div></div>
+        <div class="info-row"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="lbl">Phone</div><a href="tel:+919011133840" class="val">090111 33840</a></div></div>
+        <div class="info-row"><span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24z"/></svg></span><div><div class="lbl">WhatsApp</div><a href="https://wa.me/919011133840?text=Hi%2C%20I'd%20like%20to%20book%20an%20appointment" class="val">Chat / Book on WhatsApp</a></div></div>
+        <div class="info-row"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="lbl">Hours</div><div class="val">Mon–Sat · 10AM–1PM & 6PM–9PM</div></div></div>
+        <div class="contact-cta">
+          <a href="https://www.google.com/maps/dir/?api=1&destination=Sai+Samarth+Clinic+Rakshak+Nagar+Kharadi+Pune+411014" class="btn btn-primary" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l19-9-9 19-2-8-8-2z" stroke-linejoin="round"/></svg>Get Directions</a>
+          <a href="tel:+919011133840" class="btn btn-ghost">Call Clinic</a>
+        </div>
+      </div>
+      <div class="map reveal d1">
+        <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Sai Samarth Clinic location"
+          src="https://maps.google.com/maps?q=Sai%20Samarth%20Clinic%20Rakshak%20Nagar%20Kharadi%20Pune&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
+      </div>
+    </div>
+
+    <div class="cta-band reveal" style="margin-top:40px">
+      <h2>Not feeling well? Don't wait.</h2>
+      <p>Book your appointment with Dr. Prasad B. Pote today and get gentle, honest care for you and your family.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a href="tel:+919011133840" class="btn btn-primary">📞 Call 090111 33840</a>
+        <a href="https://wa.me/919011133840?text=Hi%2C%20I'd%20like%20to%20book%20an%20appointment" class="btn btn-ghost">WhatsApp Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <a href="#top" class="brand"><span class="logo"><svg viewBox="0 0 24 24"><path fill="#fff" d="M10 2h4v6h6v4h-6v10h-4V12H4V8h6z"/></svg></span><span>Sai Samarth Clinic<small>Ray of Light Medical Trust</small></span></a>
+      <p>A trusted family clinic in Kharadi, Pune, offering holistic & homeopathic care led by Dr. Prasad B. Pote (BHMS).</p>
+    </div>
+    <div class="foot">
+      <h5>Quick Links</h5>
+      <a href="#about">About</a><a href="#services">Services</a><a href="#timings">Timings</a><a href="#reviews">Reviews</a><a href="#contact">Contact</a>
+    </div>
+    <div class="foot">
+      <h5>Reach Us</h5>
+      <a href="tel:+919011133840">📞 090111 33840</a>
+      <a href="https://wa.me/919011133840">💬 WhatsApp</a>
+      <a href="https://www.google.com/maps/dir/?api=1&destination=Sai+Samarth+Clinic+Rakshak+Nagar+Kharadi+Pune+411014" target="_blank" rel="noopener">📍 Rakshak Nagar, Kharadi</a>
+    </div>
+  </div>
+  <div class="wrap copy">© <span id="yr"></span> Sai Samarth Clinic · Dr. Prasad B. Pote (BHMS). All rights reserved.</div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a class="fab" href="https://wa.me/919011133840?text=Hi%2C%20I'd%20like%20to%20book%20an%20appointment" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.477-.913z"/></svg>
+</a>
+
+<script>
+/* year */
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* header shrink */
+const header = document.getElementById('header');
+addEventListener('scroll', () => header.classList.toggle('scrolled', scrollY > 20), {passive:true});
+
+/* mobile drawer */
+const ham=document.getElementById('ham'), drawer=document.getElementById('drawer'), scrim=document.getElementById('scrim');
+function toggleMenu(open){ham.classList.toggle('open',open);drawer.classList.toggle('open',open);scrim.classList.toggle('open',open);document.body.style.overflow=open?'hidden':''}
+ham.addEventListener('click',()=>toggleMenu(!drawer.classList.contains('open')));
+scrim.addEventListener('click',()=>toggleMenu(false));
+drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>toggleMenu(false)));
+
+/* reveal on scroll */
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+},{threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* count up */
+const countIO=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting) return;
+    const el=e.target, end=parseFloat(el.dataset.count), dec=+(el.dataset.dec||0), suf=el.dataset.suffix||'';
+    const dur=1400, t0=performance.now();
+    const tick=(t)=>{const p=Math.min((t-t0)/dur,1); const ease=1-Math.pow(1-p,3);
+      el.textContent=(end*ease).toFixed(dec)+(p===1?suf:''); if(p<1)requestAnimationFrame(tick);};
+    requestAnimationFrame(tick); countIO.unobserve(el);
+  });
+},{threshold:0.5});
+document.querySelectorAll('[data-count]').forEach(el=>countIO.observe(el));
+
+/* live open/closed status — Mon-Sat 10-13 & 18-21 IST */
+(function(){
+  const now=new Date();
+  // use clinic-local logic on visitor's clock (good enough for a demo)
+  const day=now.getDay(); // 0=Sun
+  const mins=now.getHours()*60+now.getMinutes();
+  const M1=[600,780], M2=[1080,1260]; // 10:00-13:00, 18:00-21:00
+  let open=false, next='';
+  if(day>=1 && day<=6){
+    if(mins>=M1[0]&&mins<M1[1]){open=true;next='Closes at 1:00 PM'}
+    else if(mins>=M2[0]&&mins<M2[1]){open=true;next='Closes at 9:00 PM'}
+    else if(mins<M1[0]){next='Opens today at 10:00 AM'}
+    else if(mins<M2[0]){next='Opens again at 6:00 PM'}
+    else{next='Opens tomorrow at 10:00 AM'}
+  } else { next='Opens Monday at 10:00 AM'; }
+  const pill=document.getElementById('statusPill'),dot=document.getElementById('statusDot'),
+        txt=document.getElementById('statusText'),live=document.getElementById('liveTiming');
+  if(open){txt.textContent='Open Now';}
+  else{txt.textContent='Closed';pill.classList.remove('live');pill.style.background='#fef2f2';pill.style.color='#dc2626';pill.style.borderColor='#fecaca';dot.classList.add('closed');}
+  live.innerHTML = (open?'🟢 <b>Open right now</b> · ':'🔴 <b>Currently closed</b> · ')+next;
+})();
+</script>
+</body>
+</html>
